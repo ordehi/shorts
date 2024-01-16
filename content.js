@@ -1,21 +1,23 @@
 window.addEventListener('load', function () {
-  const hideShorts = () => {
-    chrome.storage.sync.get('hideShorts', function (data) {
-      const hide = data.hideShorts;
-      document
-        .querySelectorAll('ytd-rich-shelf-renderer')
-        .forEach((element) => {
-          if (
-            element.querySelector('span#title') &&
-            element.querySelector('span#title').textContent.includes('Shorts')
-          ) {
-            element.style.display = hide ? 'none' : '';
-          }
-        });
+  const findShortsElements = () => {
+    return Array.from(
+      document.querySelectorAll('ytd-rich-shelf-renderer')
+    ).filter((element) => {
+      return (
+        element.querySelector('span#title') &&
+        element.querySelector('span#title').textContent.includes('Shorts')
+      );
     });
   };
 
-  hideShorts();
+  const hideShorts = () => {
+    chrome.storage.sync.get('hideShorts', function (data) {
+      const hide = data.hideShorts;
+      findShortsElements().forEach((element) => {
+        element.style.display = hide ? 'none' : '';
+      });
+    });
+  };
 
   chrome.runtime.onMessage.addListener(function (
     request,
@@ -36,4 +38,12 @@ window.addEventListener('load', function () {
   };
 
   window.addEventListener('scroll', debounce(hideShorts, 300));
+
+  const intervalId = setInterval(() => {
+    const elements = findShortsElements();
+    if (elements.length > 0) {
+      hideShorts();
+      clearInterval(intervalId);
+    }
+  }, 100);
 });
