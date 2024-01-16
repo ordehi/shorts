@@ -2,6 +2,7 @@
   "manifest_version": 3,
   "name": "Simple Hide YouTube Shorts",
   "version": "1.0",
+  "description": "Avoid distractions by hiding YouTube Shorts",
   "permissions": ["storage", "scripting"],
   "action": {
     "default_icon": {
