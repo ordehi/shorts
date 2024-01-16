@@ -4,6 +4,11 @@
   "version": "1.0",
   "permissions": ["storage", "scripting"],
   "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
     "default_popup": "options/options.html",
     "default_title": "Hide YouTube Shorts"
   },
