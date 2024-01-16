@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hide Shorts</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        width: 120px;
+      }
+
+      h1 {
+        font-size: 20px;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 10px;
+      }
+
+      #hide-shorts-checkbox {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 40px;
+        height: 20px;
+        background: #c6c6c6;
+        outline: none;
+        border-radius: 20px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+        transition: 0.1s;
+        position: relative;
+      }
+
+      #hide-shorts-checkbox:checked {
+        background: #2ecc71;
+      }
+
+      #hide-shorts-checkbox:before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        top: 0;
+        left: 0;
+        background: #fff;
+        transform: scale(1.1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: 0.1s;
+      }
+
+      #hide-shorts-checkbox:checked:before {
+        left: 20px;
+      }
+
+      #hide-shorts-checkbox:checked + label {
+        background: #2ecc71;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hide Shorts</h1>
+    <form id="options-form">
+      <label>
+        <input type="checkbox" id="hide-shorts-checkbox" />
+      </label>
+    </form>
+    <script src="options.js"></script>
+  </body>
+</html>

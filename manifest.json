@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Simple Hide YouTube Shorts",
+  "version": "1.0",
+  "permissions": ["storage", "scripting"],
+  "action": {
+    "default_popup": "options/options.html",
+    "default_title": "Hide YouTube Shorts"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
